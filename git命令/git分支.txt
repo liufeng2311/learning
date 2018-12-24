@@ -1,0 +1,14 @@
+1.git branch dev                      创建dev分支
+
+2.git checkout dev                    切换至dev分支
+
+3.git checkout -b dev                 创建并切换至dev分支,相当于1和2的合体
+
+4.git branch                          查看所有的分支，*代表当前所在的分支
+
+5.git branch -d dev                   删除dev分支 d表示的是delete，删除的前提是改分支已经合并到上游分支
+
+6.git branch -D dev                   强制删除dev分支，D表示的是 --delete--force，可以删除没有合并的分支
+
+
+

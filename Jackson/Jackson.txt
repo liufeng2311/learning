@@ -1,0 +1,5 @@
+ 1.@JsonIgnore      忽略该字段的显示，常用于密码
+ 
+ 2.@JsonInclude(JsonInclude.Include.NON_NULL)   该字段为null时不显示，不为null时显示
+ 
+ 3.@JsonFormat(pattern="yyyy-mm-dd hh:mm:ss")    格式化日期字段
