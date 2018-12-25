@@ -1,0 +1,28 @@
+1.引入springBoot热部署的依赖：
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional><true表示该依赖只作用于本项目，不传递给子项目>
+		</dependency>
+2.添加devtools相关配置
+	 application.properties文件里配置devtools信息:
+	 spring.devtools.restart.enabled=true(该属性为true时表示启用热部署)
+	
+	 当classpath路径下的文件发生变化时，会重启服务器，但不包括如下路径：(maven项目classpath路径为target/classes)
+	 /META-INF/maven
+	 /resources
+	 /static
+	 /templates
+	 /public
+	 以上路径不会重启服务，但浏览器会重新加载资源(原理是将spring.thymeleaf.cache设为false)
+	 
+	 spring.devtools.restart.additional-paths="路径"      (在默认要重启的的路径之外添加需要重启的路径,非classpath目录下的任意路径)
+	 
+	 spring.devtools.restart.additional-exclude="路径"    (除了默认不需要重启的路径之外，额外添加不需要重启的目录，指classpath路径下的目录)
+     
+	 spring.devtools.restart.exclude=static/**,public/**   (修改默认设置,使其只有在规定的路径下发生修改才不会重启)
+	 经过测试只能排除默认六个路径之中的，其他不生效
+	 
+	 
+	 spring.devtools.restart.additional-paths="路径"      
+	 在默认的路径之外添加需要重启的路径
