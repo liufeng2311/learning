@@ -1,0 +1,24 @@
+1.引入springBoot切面的依赖：
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+2.定义一个类，将其设置为切面，并实例化
+	@Aspect                      表示该类是一个切面
+	@Component                   表示将该类的实例交给容器管理
+3.定义切入点表达式，表示在执行到指定方法时进行切入,执行log方法，@Pointcut用于简化在@Before、@After重新定义切入点表达式
+	@Pointcut("表达式")
+	public void log(){
+	}
+	
+	表达式的具体内容如下：
+	execution(访问修饰符 返回类型 类.方法名(参数))
+	execution(public * com.demo.controller.UserController.getUserInfo(..))
+	* 代表所有，..表示任何参数，两个相邻的*可以用一个*代替
+4.常见切入类型(在方法上注释)log()用来简化切入点表达式
+	@Before("log()")    在方法前执行
+	@After("log()")     在方法后执行
+	@AfterReturning(returning="object",pointcut="log()")    方法返回的值，returning="object",指定方法返回的值，作为切面方法的参数
+		public void afterReturn(Object object) {
+		logger.info("return={}",object);
+	}

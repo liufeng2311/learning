@@ -1,0 +1,20 @@
+1.编写统一的最外层信息返回类(包括状态码、提示信息、返回内容)
+
+2.编译最外层信息返回类的工具类，避免重复代码
+
+3.编译返回状态码枚举类，集中管理返回状态码，枚举只需要写get方法，因为实例通过构造关系指定，不能set，枚举只是在普通类的方法之上把实例直接写在类中，供直接使用
+
+4.自定义异常类，因为Exception没有状态码code属性，我们继承RuntimeException类，并添加code属性，RuntimeException可以回滚，Exception不可以
+	两个构造方法，一个是枚举参数，用于错误的返回
+	              一个是(code,信息)，用于成功的返回
+5编译异常捕获类，将异常信息包装到我们第一步定义的返回类中进行返回，
+    添加类注解
+	@ControllerAdvice   //定义是异常捕获
+	规定捕捉的异常类型
+	@ExceptionHandler(value=Exception.class)
+	使方法正常返回
+	@ResponseBody
+	当有多个异常类型时，使用instanceof确定具体执行哪个方法
+	if(exception instanceof UserException) {
+			return ResultUtil.error(((UserException) exception).getCode(), exception.getMessage());
+		}

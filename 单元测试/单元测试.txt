@@ -1,0 +1,29 @@
+1.添加springboot单元测试依赖
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+2.Service层测试，添加如下注释
+	@SpringBootTest  //规定项目的入口，
+	@RunWith(SpringRunner.class)  // 让 JUnit 运行 Spring 的测试环境， 获得 Spring 环境的上下文的支持
+3.Controller层测试，利用MockMvc模仿http请求
+	添加类注解，自动配置MockMvc
+	@AutoConfigureMockMvc
+	引入MockMvc
+	@Autowired
+	private MockMvc mvc
+	测试方法前加测试注释
+	@Test
+	模拟http请求(perform表示执行一个请求)
+	 mvc.perform(MockMvcRequestBuilders.get("/learn/resource/1001")   //以get方式请求该地址  
+                .contentType(MediaType.APPLICATION_JSON_UTF8)         //发送段发送的数据格式和编码
+                .accept(MediaType.APPLICATION_JSON_UTF8)              //发送端希望接收的数据格式和编码
+                .session(new MockHttpSession())                       //注入一个session
+        )
+       .andExpect(MockMvcResultMatchers.status().isOk())              //期望返回的状态。isOK表示200
+       .andExpect(MockMvcResultMatchers.jsonPath("$.author").value("嘟嘟MD独立博客"))     //返回对象某个字段的值
+       .andExpect(MockMvcResultMatchers.jsonPath("$.title").value("Spring Boot干货系列"))
+       .andDo(MockMvcResultHandlers.print());                         //输出这个响应的内容
+}
+	
