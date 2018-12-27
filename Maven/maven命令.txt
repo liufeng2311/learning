@@ -1,0 +1,52 @@
+1.通过maven命令创建项目
+	mvn archetype:generate -DinteractiveMode=false -DgroupId=com.feng -DartifactId=project-by-maven -Dversion=0.0.1-SNAPSHOT
+	mvn archetype:generate                  生成项目的命令  原型：生成
+	-DinteractiveMode=false                 是否进行交互，默认就是fa
+	-DgroupId=com.feng                      设置项目名
+	-DartifactId=project-by-maven           设置模块名
+	-Dversion=0.0.1-SNAPSHOT                设置版本
+	生成的项目默认包名为模块名
+2.打包(jar)	
+	pom文件中打包方式为jar，默认的打包方式就是jar
+	mvn -Dmaven.test.skip -U clean package
+	mvn -Dmaven.test.skip                    跳过单元测试
+	-U                                       Update第三方jar包
+	clean                                    清理之前编译的内容，即target的文件
+	package                                  进行编译打包
+3.通过jar包启动项目
+	java -jar jar包
+4.打包(war)
+    pom文件中打包方式为war
+	在src目录下添加webapp/WEB-INF/web.xml
+	执行mvn -Dmaven.test.skip -U clean package
+5.通过war包启动项目
+	java -jar war包
+6.通过maven命令启动项目
+	进入项目路径
+	mvn -Dmaven.test.skip -U clean install
+	进入controller模块(maven插件的位置)下执行
+	mvn spring-boot:run
+3.多项目整合找不到main方法
+	在parent项目的pom文件的mavne插件添加main方法路径
+	<configuration>
+	<mainClass>main方法所在的类</mainClass>
+	</configuration>
+	再将该插件放到controller所在的项目目录
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+SpringBoot测试版本在国内镜像库里不存在，引用测试版本需要在pom文件中设定spring的仓库
