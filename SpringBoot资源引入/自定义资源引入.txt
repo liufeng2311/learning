@@ -1,4 +1,4 @@
-1.引入springBoot资源配置的依赖：
+1.引入springBoot资源配置的依赖：  可以不加入该依赖
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-configuration-processor</artifactId>
@@ -13,4 +13,7 @@
 	@Configuration              （相当于一个xml文件<bean></bean>，用于读取资源文件）
 	@ConfigurationProperties(prefix="com.feng.liu")    (设置去除前缀字段，对应资源文件)
 	@PropertySource("classpath:resource.properties")   (设置资源文件的路径)
+
+
+注意：当application.properties与自定义资源文件属性一致时，以application.properties为准
 	
