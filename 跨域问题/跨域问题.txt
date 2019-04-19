@@ -1,6 +1,0 @@
-1.@CrossOrigin
-	在controller层添加类注解，表示允许全部来源，不但不能解决session跨域问题
-2.Session跨域，添加如下参数
-	@CrossOrigin(allowCredentials="true",allowedHeaders="*")
-	同时ajax添加如下参数
-	xhrFields:{withCredentials:true}

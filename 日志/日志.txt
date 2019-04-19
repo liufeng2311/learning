@@ -1,7 +1,0 @@
-1.在类中定义全局日志变量
-	private final static Logger logger =LoggerFactory.getLogger(Asspet.class); 日志使用Spring自带的slf4j
-2.输入日志
-	logger.info("url={}",request.getRequestURI());
-	自定义设置输出日志的级别，输出的内容必须为字符串
-	"url={}",request.getRequestURI()表示会自动吧第二个参数的内容方法第一个参数的{}，拼成字符串
-3.用日志Logger代替System.out.println("");
