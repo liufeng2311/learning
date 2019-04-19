@@ -10,5 +10,5 @@
 
 6.git branch -D dev                   强制删除dev分支，D表示的是 --delete--force，可以删除没有合并的分支
 
-
-
+7.
+8.
