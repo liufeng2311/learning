@@ -1,0 +1,12 @@
+
+--自己操作--
+git add .   把有变动的文件提交到暂存区 
+git commit -m  "此次提交内容的描述（自定义，必须写）"
+git  push origin master     推送至远程master分支
+
+
+--多人操作，合伙--
+git add .   把有变动的文件提交到暂存区 
+git commit -m  "此次提交内容的描述（自定义，必须写）"
+git pull origin master   拉取别人提交到master分支的代码与本地合并
+git  push origin master     推送至远程master分支
