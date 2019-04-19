@@ -1,0 +1,41 @@
+1.Ubuntu进入命令行
+	Ctrl+Alt+T
+2.查看Ubuntu是否安装redis
+	whereis redis-server                                    是否安装redis服务端
+	whereis redis-cli                                       是否安装redis客户端
+3.Ubuntu下载安装redis
+	apt-get install redis                                   下载安装redis，配置文件redis-conf的路径为  /etc/redis/redis-conf
+4.启动redis-cli客户端        
+	redis-cli
+5.退出redis客户端模式
+	exit
+6.修改redis-conf文件权限
+	chown -R liufeng redis-conf                              修改redis-conf文件的所有者为liufeng   -R表示该文件以及它的子文件
+	
+	drwxrwxrwx(一般文件的权限由十位组成，第一个表示是不是文件夹，后面每三位表示用户、用户所属组、其他用户的权限) 
+	u    用户
+	g    用户所属组
+	o    用户和用户所属组以外的用户
+	=    清除之前权限，重新赋予
+	-    取消某权限
+	+    添加某权限
+	r    可读权限     4
+	w    可写权限     2
+	x    可执行权限   1
+	rwx可用111表示(7)，对应的权限存在是，则用1表示，不存在则用0,
+	chmod 777 redis-conf                                    表示该文件可以被任何用户读写以及操作
+	chmod -R u=rwx,g=rx redis.conf                             这种方式下权限不可以用数字表示  -R表示子文件也起作用
+7.切换用户
+	su      切换到root用户
+	exit    从root用户切换到普通用户
+8.redis持久化
+	AOF
+	开启AOF功能：appendonly yes     默认为no，未开启
+	文件名：     appendfilename "appendonly.aof"
+    文件路径：   与RDB共用           var/lib/redis
+	写入频率：   # appendfsync always     每次
+                   appendfsync everysec   每秒
+                 # appendfsync no         从不
+	RDB(默认开启) ，禁止时将save全部注释掉即可
+
+	
