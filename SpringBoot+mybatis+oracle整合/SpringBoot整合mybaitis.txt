@@ -58,7 +58,7 @@
 		
 7.在resources文件下创建自动生成工具的xml文件(具体内容见mybatis-generator仓库)，文件名自取：genreatorConfig.xml(自定义即可)
 
-8.运行mybatis-generator：genreator命令，然后更新maven项目即可看到生成的文件
+8.运行mybatis-generator：generate命令，然后更新maven项目即可看到生成的文件
 
 	
 
